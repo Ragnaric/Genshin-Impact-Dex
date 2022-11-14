@@ -1,0 +1,47 @@
+{
+  "name": "genshin-impact-dex",
+  "version": "1.0.0",
+  "description": "An app to search for Genshin Impact Character data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ragnaric/Genshin-Impact-Dex.git"
+  },
+  "keywords": [
+    "Genshin",
+    "Impact",
+    "Genshin Impact",
+    "characters"
+  ],
+  "author": "Jonathan Navarrete",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ragnaric/Genshin-Impact-Dex/issues"
+  },
+  "homepage": "https://github.com/Ragnaric/Genshin-Impact-Dex#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.2",
+    "@babel/eslint-parser": "^7.19.1",
+    "@babel/plugin-transform-runtime": "^7.19.6",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/runtime": "^7.20.1",
+    "babel-loader": "^9.1.0",
+    "eslint": "^8.27.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jest": "^27.1.5",
+    "path": "^0.12.7",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
