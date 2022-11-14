@@ -38,7 +38,7 @@ module.exports={
         /** "static"
          * This property tells Webpack what static file it should serve
         */
-        static: [DIST_DIR],
+        static: DIST_DIR,
         /** "open"
          * opens the browser after server is successfully started
         */
@@ -74,6 +74,11 @@ module.exports={
                 test: /\.(js|jsx)$/,    //kind of file extension this rule should look for and apply in test
                 exclude: /node_modules/, //folder to be excluded
                 use:  'babel-loader' //loader which we are going to use
+            },
+            {
+              test: /\.css$/i,
+              include: SRC_DIR,
+              use: ['style-loader', 'css-loader', 'postcss-loader'],
             }
         ]
     }
