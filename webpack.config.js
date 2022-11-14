@@ -1,6 +1,6 @@
-const path = require("path");
-let SRC_DIR = path.join(__dirname, '/client/src');
-let DIST_DIR = path.join(__dirname, '/client/dist');
+const path = require('path');
+var SRC_DIR = path.join(__dirname, '/client/src');
+var DIST_DIR = path.join(__dirname, '/client/dist');
 
 /*We are basically telling webpack to take index.js from entry. Then check for all file extensions in resolve.
 After that apply all the rules in module.rules and produce the output and place it in main.js in the public folder.*/
@@ -38,7 +38,7 @@ module.exports={
         /** "static"
          * This property tells Webpack what static file it should serve
         */
-        static: ["./public"],
+        static: [DIST_DIR],
         /** "open"
          * opens the browser after server is successfully started
         */

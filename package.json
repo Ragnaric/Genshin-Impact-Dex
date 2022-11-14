@@ -4,6 +4,8 @@
   "description": "An app to search for Genshin Impact Character data",
   "main": "index.js",
   "scripts": {
+    "build": "Webpack .",
+    "start": "webpack-dev-server .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,12 +32,16 @@
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "@babel/runtime": "^7.20.1",
+    "autoprefixer": "^10.4.13",
     "babel-loader": "^9.1.0",
     "eslint": "^8.27.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-jest": "^27.1.5",
+    "nodemon": "^2.0.20",
     "path": "^0.12.7",
+    "postcss": "^8.4.19",
+    "tailwindcss": "^3.2.4",
     "webpack": "^5.75.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.1"
