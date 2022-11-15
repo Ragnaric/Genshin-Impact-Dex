@@ -1,10 +1,14 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
+const { getCharacterData } = require('./GenshinAPI.js');
 
-app.get('/character', (req, res) =>{
-  console.log('Server get request', req.body);
-  res.status(200).send('This is the data');
+app.get('/characters', (req, res) =>{
+  getCharacterData()
+    .then((data) => {
+      res.status(200).send(data);
+    })
+    .catch(err => console.error(err.stack));
 })
 
 app.listen(process.env.PORT, () => {
