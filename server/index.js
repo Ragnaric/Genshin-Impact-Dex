@@ -1,10 +1,10 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const { getCharacterData } = require('./GenshinAPI.js');
+const { saveCharacterData } = require('../database/controllers/GenshinAPI.js');
 
-app.get('/characters', (req, res) =>{
-  getCharacterData()
+app.get('/update', (req, res) =>{
+  saveCharacterData()
     .then((data) => {
       res.status(200).send(data);
     })
