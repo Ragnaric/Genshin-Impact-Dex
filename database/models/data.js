@@ -1,4 +1,4 @@
-[
+const rawData = [
   {
       "id": "albedo",
       "name": "Albedo",
@@ -5610,4 +5610,6 @@
       "roles": null,
       "characterOverview": null
   }
-]
+];
+
+module.exports.rawData = rawData;
