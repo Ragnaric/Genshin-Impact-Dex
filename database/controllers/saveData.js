@@ -8,13 +8,13 @@ const saveData = (charactersData) => {
 
 const saveTalents = (talentsData) => {
   for (talent of talentsData) {
-    pool.query(`INSERT INTO talents (id, name, description, icon, type, character) VALUES ($$${talent.id}$$, $$${talent.name}$$, $$${talent.description}$$, $$${talent.icon}$$, $$${talent.type}$$, $$${talent.character}$$) ON CONFLICT DO NOTHING`);
+    pool.query(`INSERT INTO talents (id, name, description, icon, type, character) VALUES ($$${talent.id}$$, $$${talent.name}$$, $$${talent.description}$$, $$${talent.image}$$, $$${talent.type}$$, $$${talent.character}$$) ON CONFLICT DO NOTHING`);
   }
 };
 
 const saveConstellations = (constellationsData) => {
   for (constellation of constellationsData) {
-    pool.query(`INSERT INTO constellations (id, name, order, description, icon, character) VALUES ($$${talent.id}$$, $$${talent.name}$$, $$${talent.order}$$, $$${talent.description}$$, $$${talent.icon}$$, $$${talent.character}$$) ON CONFLICT DO NOTHING`);
+    pool.query(`INSERT INTO constellations (id, name, "order", description, icon, character) VALUES ($$${constellation.id}$$, $$${constellation.name}$$, $$${constellation.order}$$, $$${constellation.description}$$, $$${constellation.image}$$, $$${constellation.character}$$) ON CONFLICT DO NOTHING`);
   }
 };
 
