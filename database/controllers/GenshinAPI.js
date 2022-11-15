@@ -1,11 +1,9 @@
-//This file exists for the sole purpose of getting new character data and saving it to the database. This function, as well as the route that calls it, should be commented out after the database has been updated so the user cannot interact with it.
+//This file exists for the sole purpose of getting new data from the game and sending it in a new format to the server so that it can then be saved in the database. These functions, as well as the route that calls them, should be commented out after the database has been updated so the user cannot interact with them.
 
 const axios = require('axios');
-const { saveData } = require('./saveData.js');
-const { convertData } = require('./convertData.js');
+const {convertData, generateTalents, generateConstellations} = require('./manipulateData.js');
 
-
-const saveCharacterData = () => {
+const getExternalAPIData = () => {
   let options = {
     method: 'GET',
     url: 'https://impact.moe/api/characters?expand=talents,constellations'
@@ -13,11 +11,21 @@ const saveCharacterData = () => {
   return new Promise ((resolve, reject) => {
     axios(options)
       .then(res => {
-        const alteredData = convertData(res.data);
+        const alteredData = generateConstellations(res.data);
         resolve(alteredData);
       })
       .catch(err => console.error(err.stack));
   });
 };
 
-module.exports.saveCharacterData = saveCharacterData;
+const getExternalTalents = () => {
+
+};
+
+const getExternalConstellations = () => {
+
+};
+
+module.exports.getExternalAPIData = getExternalAPIData;
+module.exports.getExternalTalents = getExternalTalents;
+module.exports.getExternalConstellations = getExternalConstellations;
