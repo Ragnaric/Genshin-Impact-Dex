@@ -2,6 +2,7 @@
 
 const axios = require('axios');
 const { saveData } = require('./saveData.js');
+const { convertData } = require('./convertData.js');
 
 
 const saveCharacterData = () => {
@@ -12,7 +13,8 @@ const saveCharacterData = () => {
   return new Promise ((resolve, reject) => {
     axios(options)
       .then(res => {
-        resolve(res.data);
+        const alteredData = convertData(res.data);
+        resolve(alteredData);
       })
       .catch(err => console.error(err.stack));
   });
