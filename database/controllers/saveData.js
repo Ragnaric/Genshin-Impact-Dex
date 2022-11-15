@@ -1,4 +1,4 @@
-const { pool } = require('../models/db.js')
+const { pool } = require('../models/db.js');
 
 const saveData = (charactersData) => {
   for (character of charactersData) {
