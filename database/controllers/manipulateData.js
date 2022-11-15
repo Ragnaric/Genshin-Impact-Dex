@@ -1,3 +1,5 @@
+//These functions are only ever called to format the data to pass on to other functions
+
 const convertData = (rawData) => {
   let purgedData = [];
   rawData.forEach(item => {
@@ -26,6 +28,7 @@ const generateTalents = (rawData) => {
     let talents = rawData[i].talents;
     for (let j = 0; j < talents.length; j++) {
       let talent = talents[j];
+      talent.id = parseInt(talent.id);
       talent.character = rawData[i].name;
       talentsData.push(talent);
     }
@@ -35,11 +38,11 @@ const generateTalents = (rawData) => {
 
 const generateConstellations = (rawData) => {
   let constellationsData = [];
-  console.log(rawData[0].constellations)
   for (let i = 0; i < rawData.length; i++) {
     let constellations = rawData[i].constellations;
     for (let j = 0; j < constellations.length; j++) {
       let constellation = constellations[j];
+      constellation.id = parseInt(constellation.id);
       constellation.character = rawData[i].name;
       constellationsData.push(constellation);
     }

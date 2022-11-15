@@ -11,7 +11,7 @@ const getExternalAPIData = () => {
   return new Promise ((resolve, reject) => {
     axios(options)
       .then(res => {
-        const alteredData = generateConstellations(res.data);
+        const alteredData = convertData(res.data);
         resolve(alteredData);
       })
       .catch(err => console.error(err.stack));

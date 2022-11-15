@@ -6,26 +6,18 @@ const saveData = (charactersData) => {
   }
 };
 
-const saveTalents = (charactersData) => {
-  let talentsData = [];
-  for (let i = 0; i < charactersData.length; i++) {
-    let talents = charactersData[i];
-    for (let j = 0; j < talents.length; j++) {
-      let talent = talents[j];
-      talent.character = charactersData[i].name;
-      talentsData.push(talent);
-    }
-  }
-
-
+const saveTalents = (talentsData) => {
   for (talent of talentsData) {
     pool.query(`INSERT INTO talents (id, name, description, icon, type, character) VALUES ($$${talent.id}$$, $$${talent.name}$$, $$${talent.description}$$, $$${talent.icon}$$, $$${talent.type}$$, $$${talent.character}$$) ON CONFLICT DO NOTHING`);
   }
 };
 
-const updateData = () => {
-
+const saveConstellations = (constellationsData) => {
+  for (constellation of constellationsData) {
+    pool.query(`INSERT INTO constellations (id, name, order, description, icon, character) VALUES ($$${talent.id}$$, $$${talent.name}$$, $$${talent.order}$$, $$${talent.description}$$, $$${talent.icon}$$, $$${talent.character}$$) ON CONFLICT DO NOTHING`);
+  }
 };
 
 module.exports.saveData = saveData;
-module.exports.updateData = updateData;
+module.exports.saveConstellations = saveConstellations;
+module.exports.saveTalents = saveTalents;
