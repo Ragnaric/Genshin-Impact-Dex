@@ -2,8 +2,8 @@ import React from 'react';
 
 const Talents = () => {
   return (
-    <div>
-      <div className='text-amber-100'>Talents</div>
+    <div className="container mx-10">
+      <div className='text-amber-200 text-2xl'>Talents</div>
     </div>
   );
 };

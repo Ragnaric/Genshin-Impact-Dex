@@ -2,8 +2,8 @@ import React from 'react';
 
 const Constellations = () => {
   return (
-    <div>
-      <div className='text-amber-100'>Constellations</div>
+    <div className="container mx-10">
+      <div className='text-amber-200 text-2xl'>Constellations</div>
     </div>
   );
 };
