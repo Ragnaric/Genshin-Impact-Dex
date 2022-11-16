@@ -4,7 +4,7 @@ import CharacterList from './CharacterList';
 const Navigation = ({characters}) => {
   return (
     <div className="container mx-10">
-      <div className='text-amber-200 text-2xl'>Navigation</div>
+      <div className='text-amber-200 text-2xl m-10'>Navigation</div>
       <CharacterList characters={characters}/>
     </div>
   );
