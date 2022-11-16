@@ -53,6 +53,10 @@ app.get('/characters/:character', (req, res) => {
     .catch(err => console.error(err.stack));
 });
 
+app.get('/talents', (req, res) => {
+
+});
+
 
 app.listen(process.env.PORT, () => {
   console.log(`Listening on port ${process.env.PORT}`);
