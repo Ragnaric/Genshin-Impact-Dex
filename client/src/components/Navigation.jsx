@@ -1,11 +1,11 @@
 import React from 'react';
-import Slider from './Slider';
+import CharacterList from './CharacterList';
 
-const Navigation = () => {
+const Navigation = ({characters}) => {
   return (
     <div className="container mx-10">
       <div className='text-amber-200 text-2xl'>Navigation</div>
-      <Slider />
+      <CharacterList characters={characters}/>
     </div>
   );
 };

@@ -1,10 +1,15 @@
 require('dotenv').config();
+const path = require('path');
+const URL = process.env.URL;
+const PORT = process.env.PORT;
 const express = require('express');
 const app = express();
 const { getExternalAPIData } = require('../database/controllers/GenshinAPI.js');
 const { generateConstellations, generateTalents } = require('../database/controllers/manipulateData.js');
 const { saveData, saveTalents, saveConstellations, updateImages } = require('../database/controllers/saveData.js');
 const { fetchCharacters, findCharacter, findCharacterBy } = require('../database/controllers/fetchData.js');
+
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 //The following routes are only for internal use whenever new data is added to the game since they fetch and save the data to the database. The user should not be able to interact with them.
 app.get('/update', (req, res) => {
@@ -68,6 +73,6 @@ app.get('/talents', (req, res) => {
 });
 
 
-app.listen(process.env.PORT, () => {
-  console.log(`Listening on port ${process.env.PORT}`);
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
 });
