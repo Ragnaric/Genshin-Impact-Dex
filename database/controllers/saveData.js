@@ -1,3 +1,5 @@
+//This file exists for the sole purpose of saving new data from the game to the database. The user should not be able to interact with these functions.
+
 const { pool } = require('../models/db.js');
 
 const saveData = (charactersData) => {
@@ -18,6 +20,13 @@ const saveConstellations = (constellationsData) => {
   }
 };
 
+const updateImages = (charactersData) => {
+  for (character of charactersData) {
+    pool.query(`UPDATE characters SET splash_art = $$'https://enka.network/ui/UI_Gacha_AvatarImg_${character.name}.png'$$, front_icon = $$'https://enka.network/ui/UI_AvatarIcon_${character.name}.png'$$, side_icon = $$'https://enka.network/ui/UI_AvatarIcon_Side_${character.name}.png'$$ WHERE id = $$${character.name}$$`);
+  }
+};
+
 module.exports.saveData = saveData;
 module.exports.saveConstellations = saveConstellations;
 module.exports.saveTalents = saveTalents;
+module.exports.updateImages = updateImages;

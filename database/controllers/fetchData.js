@@ -9,8 +9,6 @@ const findCharacter = (name) => {
 };
 
 const findCharacterBy = (filters) => {
-  let columns = Object.keys(filters);
-  let values = Object.values(filters);
   let entries = Object.entries(filters);
 
   let queryString = '';

@@ -3,10 +3,10 @@ const express = require('express');
 const app = express();
 const { getExternalAPIData } = require('../database/controllers/GenshinAPI.js');
 const { generateConstellations, generateTalents } = require('../database/controllers/manipulateData.js');
-const { saveData, saveTalents, saveConstellations } = require('../database/controllers/saveData.js');
+const { saveData, saveTalents, saveConstellations, updateImages } = require('../database/controllers/saveData.js');
 const { fetchCharacters, findCharacter, findCharacterBy } = require('../database/controllers/fetchData.js');
 
-//This route is only for internal use whenever new data is added to the game since it fetches and saves the data to the database. The user should not be able to interact with it.
+//The following routes are only for internal use whenever new data is added to the game since they fetch and save the data to the database. The user should not be able to interact with them.
 app.get('/update', (req, res) => {
   getExternalAPIData()
     .then((data) => {
@@ -16,6 +16,16 @@ app.get('/update', (req, res) => {
       saveTalents(talentsData);
       saveConstellations(constellationsData);
       res.status(200).send(constellationsData);
+    })
+    .catch(err => console.error(err.stack));
+})
+
+app.put('/update/images', (req, res) => {
+  getExternalAPIData()
+    .then((data) => {
+      updateImages(data)
+      res.status(204)
+      res.end();
     })
     .catch(err => console.error(err.stack));
 })
