@@ -16,6 +16,7 @@ const App = () => {
     axios.get('/characters')
       .then((res) => {
         setCharacters(res.data);
+        setCharacter(res.data[52])
       })
       .catch(err => console.error(err.stack));
   }, []);
