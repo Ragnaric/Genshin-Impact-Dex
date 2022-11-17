@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import CharacterCard from './CharacterCard';
 
-const CharacterList = ({characters}) => {
+const CharacterList = ({characters, setImage}) => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const CharacterList = ({characters}) => {
     <div className="overflow-hidden display-flex flex-row justify-center">
       <div className="whitespace-nowrap transition-transform duration-1000 text-amber-200">
       {characters.map((character, key) => {
-        return <CharacterCard character={character} key={key} index={key} position={index}/>
+        return <CharacterCard character={character} key={key} index={key} position={index} setImage={setImage} />
       })}
       </div>
       <div className="inline-block w-1/2">
