@@ -19,7 +19,7 @@ const CharacterList = ({characters, setCharacter, handleIconClick}) => {
 
   return (
     <div className="overflow-hidden display-flex flex-row justify-center">
-      <div className="whitespace-nowrap transition-transform duration-1000 text-amber-200">
+      <div className="whitespace-nowrap transition-transform duration-1000 text-amber-200 mb-100px">
       {characters.map((character, key) => {
         return <CharacterIcon character={character} key={key} index={key} position={index} setCharacter={setCharacter} handleIconClick={handleIconClick} />
       })}
