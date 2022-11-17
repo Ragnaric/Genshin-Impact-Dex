@@ -29,8 +29,8 @@ const fetchTalents = (name) => {
   return pool.query(`SELECT * FROM talents WHERE character = $$${name}$$`);
 };
 
-const fetchConstellations = () => {
-
+const fetchConstellations = (name) => {
+  return pool.query(`SELECT * FROM constellations WHERE character = $$${name}$$`);
 };
 
 const fetchWeapons = () => {

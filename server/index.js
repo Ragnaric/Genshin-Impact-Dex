@@ -7,7 +7,7 @@ const app = express();
 const { getExternalAPIData } = require('../database/controllers/GenshinAPI.js');
 const { generateConstellations, generateTalents } = require('../database/controllers/manipulateData.js');
 const { saveData, saveTalents, saveConstellations, updateImages } = require('../database/controllers/saveData.js');
-const { fetchCharacters, findCharacter, findCharacterBy, fetchTalents } = require('../database/controllers/fetchData.js');
+const { fetchCharacters, findCharacter, findCharacterBy, fetchTalents, fetchConstellations } = require('../database/controllers/fetchData.js');
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
@@ -36,6 +36,7 @@ app.put('/update/images', (req, res) => {
 })
 
 //Define API routes
+//Route to be used on initial render of page
 app.get('/characters', (req, res) => {
   let rarity = req.query.rarity;
   let weapon = req.query.weapon;
@@ -58,6 +59,7 @@ app.get('/characters', (req, res) => {
   }
 });
 
+//Route to be used for the search bar
 app.get('/characters/:character', (req, res) => {
   let name = req.params.character;
 
@@ -78,6 +80,16 @@ app.get('/talents', (req, res) => {
     .catch(err => console.error(err.stack));
 });
 
+app.get('/constellations', (req, res) => {
+  let name = req.query.name;
+  console.log(name);
+  fetchConstellations(name)
+    .then((data) => {
+      console.log('constellations', data.rows)
+      res.status(200).send(data.rows);
+    })
+    .catch(err => console.error(err.stack));
+});
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);

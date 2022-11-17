@@ -10,6 +10,7 @@ const App = () => {
   const [characters, setCharacters] = useState([]);
   const [character, setCharacter] = useState({});
   const [talents, setTalents] = useState([]);
+  const [constellations, setConstellations] = useState([]);
 
   useEffect(() => {
     axios.get('/characters')
@@ -20,11 +21,16 @@ const App = () => {
   }, []);
 
   const handleIconClick = (name) => {
-    console.log(name);
     axios.get(`/talents?name=${name}`)
       .then((res) => {
-        console.log(res.data);
         setTalents(res.data);
+      })
+      .then(() => {
+        axios.get(`/constellations?name=${name}`)
+          .then((res) => {
+            console.log('constellations', res.data)
+            setConstellations(res.data);
+          })
       })
       .catch(err => console.error(err.stack));
   };
