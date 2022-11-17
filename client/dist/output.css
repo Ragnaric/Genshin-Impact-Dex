@@ -620,6 +620,28 @@ html {
   height: 7rem;
 }
 
+.h-96 {
+  height: 24rem;
+}
+
+.h-3\/4 {
+  height: 75%;
+}
+
+.h-max {
+  height: -moz-max-content;
+  height: max-content;
+}
+
+.h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.h-\[800px\] {
+  height: 800px;
+}
+
 .min-h-min {
   min-height: -moz-min-content;
   min-height: min-content;
