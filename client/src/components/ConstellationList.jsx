@@ -1,5 +1,5 @@
 import React from 'react';
-import ConstellationIcon from './ConsellationIcon';
+import ConstellationIcon from './ConstellationIcon';
 
 const ConstellationList = ({constellations, character}) => {
   return (
