@@ -551,12 +551,28 @@ html {
   }
 }
 
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
 .m-auto {
   margin: auto;
 }
 
 .m-10 {
   margin: 2.5rem;
+}
+
+.m-5 {
+  margin: 1.25rem;
 }
 
 .mx-10 {
@@ -566,6 +582,10 @@ html {
 
 .inline-block {
   display: inline-block;
+}
+
+.flex {
+  display: flex;
 }
 
 .inline-flex {
@@ -580,6 +600,10 @@ html {
   height: 20%;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .w-1\/2 {
   width: 50%;
 }
@@ -590,6 +614,14 @@ html {
 
 .w-1\/6 {
   width: 16.666667%;
+}
+
+.w-1\/5 {
+  width: 20%;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .flex-1 {
@@ -686,6 +718,14 @@ html {
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 
+.bg-\[url\(\'https\:\/\/enka\.network\/ui\/UI_Gacha_AvatarImg_Venti\.png\'\)\] {
+  background-image: url('https://enka.network/ui/UI_Gacha_AvatarImg_Venti.png');
+}
+
+.bg-\[url\(https\:\/\/enka\.network\/ui\/UI_Gacha_AvatarImg_Venti\.png\)\] {
+  background-image: url(https://enka.network/ui/UI_Gacha_AvatarImg_Venti.png);
+}
+
 .bg-cover {
   background-size: cover;
 }
@@ -702,8 +742,24 @@ html {
   background-attachment: scroll;
 }
 
+.bg-clip-border {
+  background-clip: border-box;
+}
+
+.bg-clip-padding {
+  background-clip: padding-box;
+}
+
+.bg-clip-content {
+  background-clip: content-box;
+}
+
 .bg-center {
   background-position: center;
+}
+
+.bg-left {
+  background-position: left;
 }
 
 .bg-no-repeat {
@@ -740,6 +796,11 @@ html {
 .text-6xl {
   font-size: 3.75rem;
   line-height: 1;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .text-stone-400 {
@@ -808,6 +869,10 @@ html {
   transition-property: transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+.duration-1000 {
+  transition-duration: 1000ms;
 }
 
 @keyframes bounce {

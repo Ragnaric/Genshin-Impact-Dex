@@ -10,29 +10,28 @@ const CharacterList = ({characters}) => {
 
   const updateIndex = (index) => {
     if (index < 0) {
-      index = characters.length - 1;
-    } else if (index >= characters.length - 12) {
+      index = characters.length - 46;
+    } else if (index > characters.length - 46) {
       index = 0;
     }
-    console.log('index', index)
     setIndex(index);
   };
 
   return (
-    <div className="overflow-hidden display-flex flex-row">
-      <div className="whitespace-nowrap transition-transform text-amber-200">
+    <div className="overflow-hidden display-flex flex-row justify-center">
+      <div className="whitespace-nowrap transition-transform duration-1000 text-amber-200">
       {characters.map((character, key) => {
-        return <CharacterCard character={character} key={key} index={index}/>
+        return <CharacterCard character={character} key={key} index={key} position={index}/>
       })}
       </div>
-      <div className="display-flex flex-row justify-center w-1/6 m-auto">
+      <div className="inline-block w-1/2">
         <div className="text-6xl text-white text-center" onClick={() => {
           updateIndex(index - 1);
         }}>
           ‹
         </div>
       </div>
-      <div className="display-flex flex-row justify-center w-1/6 m-auto">
+      <div className="inline-block w-1/2">
         <div className="text-6xl text-white text-center" onClick={() => {
           updateIndex(index + 1);
         }}>
