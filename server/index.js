@@ -70,9 +70,9 @@ app.get('/characters/:character', (req, res) => {
 
 app.get('/talents', (req, res) => {
   let name = req.query.name;
+  console.log(name);
   fetchTalents(name)
     .then((data) => {
-      console.log('talent data', data.rows);
       res.status(200).send(data.rows);
     })
     .catch(err => console.error(err.stack));

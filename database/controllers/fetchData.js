@@ -26,7 +26,7 @@ const findCharacterBy = (filters) => {
 };
 
 const fetchTalents = (name) => {
-  return pool.query(`SELECT * FROM talents WHERE id = $$${name}$$`);
+  return pool.query(`SELECT * FROM talents WHERE character = $$${name}$$`);
 };
 
 const fetchConstellations = () => {

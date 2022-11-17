@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import CharacterIcon from './CharacterIcon';
 
-const CharacterList = ({characters, setCharacter}) => {
+const CharacterList = ({characters, setCharacter, handleIconClick}) => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const CharacterList = ({characters, setCharacter}) => {
     <div className="overflow-hidden display-flex flex-row justify-center">
       <div className="whitespace-nowrap transition-transform duration-1000 text-amber-200">
       {characters.map((character, key) => {
-        return <CharacterIcon character={character} key={key} index={key} position={index} setCharacter={setCharacter} />
+        return <CharacterIcon character={character} key={key} index={key} position={index} setCharacter={setCharacter} handleIconClick={handleIconClick} />
       })}
       </div>
       <div className="inline-block w-1/2">
