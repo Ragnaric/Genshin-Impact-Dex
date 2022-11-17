@@ -7,7 +7,7 @@ const app = express();
 const { getExternalAPIData } = require('../database/controllers/GenshinAPI.js');
 const { generateConstellations, generateTalents } = require('../database/controllers/manipulateData.js');
 const { saveData, saveTalents, saveConstellations, updateImages } = require('../database/controllers/saveData.js');
-const { fetchCharacters, findCharacter, findCharacterBy } = require('../database/controllers/fetchData.js');
+const { fetchCharacters, findCharacter, findCharacterBy, fetchTalents } = require('../database/controllers/fetchData.js');
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
@@ -69,7 +69,13 @@ app.get('/characters/:character', (req, res) => {
 });
 
 app.get('/talents', (req, res) => {
-
+  let name = req.query.name;
+  fetchTalents(name)
+    .then((data) => {
+      console.log('talent data', data.rows);
+      res.status(200).send(data.rows);
+    })
+    .catch(err => console.error(err.stack));
 });
 
 
