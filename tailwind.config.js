@@ -4,7 +4,17 @@ module.exports = {
     "./client/src/**/*.{js,jsx,ts,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        slide: {
+          '0%, 100%': { transform: 'rotate(-3deg)' },
+          '50%': { transform: 'rotate(3deg)' },
+        }
+      },
+      animation: {
+        slide: 'slide'
+      }
+    },
   },
   plugins: [],
 }

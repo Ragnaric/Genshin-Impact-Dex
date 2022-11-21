@@ -10,7 +10,7 @@ const TalentIcon = ({talent, index, character}) => {
         setShowModal(true);
       }
       }>
-        <div className="text-white text-center">{talent.name}</div>
+        <div className="text-white text-center overflow-hidden">{talent.name}</div>
       </div>
       <TalentModal show={showModal} talent={talent} character={character} onClose={() => {
           setShowModal(false);
