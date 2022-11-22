@@ -2,6 +2,9 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
 const Filter = ({characters, setCharacters, allCharacters}) => {
+  const [elementList, setElementList] = useState([]);
+  const [weaponList, setWeaponList] = useState([]);
+
   const [isElement, setIsElement] = useState(false);
   const [isWeapon, setIsWeapon] = useState(false);
 
@@ -18,64 +21,92 @@ const Filter = ({characters, setCharacters, allCharacters}) => {
   const [isCatalyst, setIsCatalyst] = useState(false);
   const [isClaymore, setIsClaymore] = useState(false);
 
-  useEffect(() => {
-    setCharacters(allCharacters);
-    if (isAnemo) {
-      filterElement(isAnemo);
-    }
-    if (isGeo) {
-      filterElement(isGeo);
-    }
-    if (isPyro) {
-      filterElement(isPyro);
-    }
-    if (isElectro) {
-      filterElement(isElectro);
-    }
-    if (isHydro) {
-      filterElement(isHydro);
-    }
-    if (isCryo) {
-      filterElement(isCryo);
-    }
-    if (isDendro) {
-      filterElement(isDendro);
-    }
-    if (isBow) {
-      filterWeapon(isBow);
-    }
-    if (isSword) {
-      filterWeapon(isSword);
-    }
-    if (isPolearm) {
-      filterWeapon(isPolearm);
-    }
-    if (isCatalyst) {
-      filterWeapon(isCatalyst);
-    }
-    if (isClaymore) {
-      filterWeapon(isClaymore);
-    }
-  }, [isElement, isWeapon]);
+  // useEffect(() => {
+  //   setCharacters(allCharacters);
+  //   if (isElement) {
+  //     if (isAnemo) {
+  //       filterElement(isAnemo);
+  //     }
+  //     if (isGeo) {
+  //       filterElement(isGeo);
+  //     }
+  //     if (isPyro) {
+  //       filterElement(isPyro);
+  //     }
+  //     if (isElectro) {
+  //       filterElement(isElectro);
+  //     }
+  //     if (isHydro) {
+  //       filterElement(isHydro);
+  //     }
+  //     if (isCryo) {
+  //       filterElement(isCryo);
+  //     }
+  //     if (isDendro) {
+  //       filterElement(isDendro);
+  //     }
+  //   }
+
+  //   if (isWeapon) {
+  //     if (isBow) {
+  //       filterWeapon(isBow);
+  //     }
+  //     if (isSword) {
+  //       filterWeapon(isSword);
+  //     }
+  //     if (isPolearm) {
+  //       filterWeapon(isPolearm);
+  //     }
+  //     if (isCatalyst) {
+  //       filterWeapon(isCatalyst);
+  //     }
+  //     if (isClaymore) {
+  //       filterWeapon(isClaymore);
+  //     }
+  //   }
+  // }, [isElement, isWeapon]);
+
+
+
 
   const filterElement = (keyword) => {
-    let updatedList = [];
-    characters.forEach(character => {
-      if (character.element === keyword) {
-        updatedList.push(character);
-      }
-    })
-    setCharacters(updatedList);
+    if (isElement) {
+      setCharacters(elementList);
+      setIsElement(!isElement);
+    } else {
+      let currentList = [];
+      let updatedList = [];
+      characters.forEach(character => {
+        if (character.element === keyword) {
+          updatedList.push(character);
+        }
+      })
+      // if (isWeapon) {
+      //   setWeaponList(characters);
+      // }
+      setElementList(characters);
+      setCharacters(updatedList);
+    }
   };
 
   const filterWeapon = (keyword) => {
-    let updatedList = [];
-    characters.forEach(character => {
-      if (character.weapon === keyword) {
-        updatedList.push(character);
-      }
-    })
-    setCharacters(updatedList);
+    if (isWeapon) {
+      setCharacters(weaponList);
+      setIsWeapon(!isWeapon);
+    } else {
+      let weaponList = [];
+      let updatedList = [];
+      characters.forEach(character => {
+        if (character.weapon === keyword) {
+          updatedList.push(character);
+        }
+      })
+      // if (isElement) {
+      //   setElementList(characters);
+      // }
+      setWeaponList(characters);
+      setCharacters(updatedList);
+    }
   };
 
   return (
@@ -159,19 +190,39 @@ const Filter = ({characters, setCharacters, allCharacters}) => {
         }}>Bow</div>
         <div className="inline-block text-white h-28 w-28 bg-no-repeat bg-cover text-center leading-[100px]" style={{backgroundImage: 'url(https://static.wikia.nocookie.net/gensin-impact/images/8/81/Icon_Sword.png)'}} onClick={(event) => {
           filterWeapon(event.currentTarget.textContent);
-          setIsSword(!isSword);
+          if (!isSword) {
+            setIsSword('Sword');
+          } else {
+            setIsSword(!isSword);
+          }
+          setIsWeapon(!isWeapon);
         }}>Sword</div>
         <div className="inline-block text-white h-28 w-28 bg-no-repeat bg-cover text-center leading-[100px]" style={{backgroundImage: 'url(https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Icon_Polearm.png)'}} onClick={(event) => {
           filterWeapon(event.currentTarget.textContent);
-          setIsPolearm(!isPolearm);
+          if (!isPolearm) {
+            setIsPolearm('Polearm');
+          } else {
+            setIsPolearm(!isPolearm);
+          }
+          setIsWeapon(!isWeapon);
         }}>Polearm</div>
         <div className="inline-block text-white h-28 w-28 bg-no-repeat bg-cover text-center leading-[100px]" style={{backgroundImage: 'url(https://static.wikia.nocookie.net/gensin-impact/images/2/27/Icon_Catalyst.png)'}} onClick={(event) => {
           filterWeapon(event.currentTarget.textContent);
-          setIsCatalyst(!isCatalyst);
+          if (!isCatalyst) {
+            setIsCatalyst('Catalyst');
+          } else {
+            setIsCatalyst(!isCatalyst);
+          }
+          setIsWeapon(!isWeapon);
         }}>Catalyst</div>
         <div className="inline-block text-white h-28 w-28 bg-no-repeat bg-cover text-center leading-[100px]" style={{backgroundImage: 'url(https://static.wikia.nocookie.net/gensin-impact/images/6/66/Icon_Claymore.png)'}} onClick={(event) => {
           filterWeapon(event.currentTarget.textContent);
-          setIsClaymore(!isClaymore);
+          if (!isClaymore) {
+            setIsClaymore('Claymore');
+          } else {
+            setIsClaymore(!isClaymore);
+          }
+          setIsWeapon(!isWeapon);
         }}>Claymore</div>
       </div>
     </div>
