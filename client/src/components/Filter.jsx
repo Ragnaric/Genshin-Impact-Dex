@@ -196,7 +196,7 @@ const Filter = ({characters, setCharacters, allCharacters}) => {
       </div>
       <div className='text-amber-200 text-xl text-center m-5'>Filter by Weapon</div>
       <div className="flex space-x-10 justify-center">
-        <div className="inline-block text-white h-28 w-28 bg-no-repeat bg-cover text-center leading-[100px]" style={{backgroundImage: 'url(https://static.wikia.nocookie.net/gensin-impact/images/8/81/Icon_Bow.png)'}} onClick={(event) => {
+        <div className="inline-block text-white h-28 w-28 bg-no-repeat bg-cover text-center leading-[100px]" style={{backgroundImage: 'url(https://static.wikia.nocookie.net/gensin-impact/images/8/81/Icon_Bow.png)', borderStyle: isBow ? 'solid' : '', borderWidth: isBow ? '4px' : '', borderRadius: isBow ? '9999px' : ''}} onClick={(event) => {
           if (!isBow) {
             setIsBow(!isBow);
             //filterList('Bow');
@@ -208,7 +208,7 @@ const Filter = ({characters, setCharacters, allCharacters}) => {
           }
           setIsFiltered(!isFiltered);
         }}>Bow</div>
-        <div className="inline-block text-white h-28 w-28 bg-no-repeat bg-cover text-center leading-[100px]" style={{backgroundImage: 'url(https://static.wikia.nocookie.net/gensin-impact/images/8/81/Icon_Sword.png)'}} onClick={(event) => {
+        <div className="inline-block text-white h-28 w-28 bg-no-repeat bg-cover text-center leading-[100px]" style={{backgroundImage: 'url(https://static.wikia.nocookie.net/gensin-impact/images/8/81/Icon_Sword.png)', borderStyle: isSword ? 'solid' : '', borderWidth: isSword ? '4px' : '', borderRadius: isSword ? '9999px' : ''}} onClick={(event) => {
           if (!isSword) {
             setIsSword(!isSword);
             //filterList('Sword');
@@ -220,7 +220,7 @@ const Filter = ({characters, setCharacters, allCharacters}) => {
           }
           setIsFiltered(!isFiltered);
         }}>Sword</div>
-        <div className="inline-block text-white h-28 w-28 bg-no-repeat bg-cover text-center leading-[100px]" style={{backgroundImage: 'url(https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Icon_Polearm.png)'}} onClick={(event) => {
+        <div className="inline-block text-white h-28 w-28 bg-no-repeat bg-cover text-center leading-[100px]" style={{backgroundImage: 'url(https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Icon_Polearm.png)', borderStyle: isPolearm ? 'solid' : '', borderWidth: isPolearm ? '4px' : '', borderRadius: isPolearm ? '9999px' : ''}} onClick={(event) => {
           if (!isPolearm) {
             setIsPolearm(!isPolearm);
             //filterList('Polearm');
@@ -232,7 +232,7 @@ const Filter = ({characters, setCharacters, allCharacters}) => {
           }
           setIsFiltered(!isFiltered);
         }}>Polearm</div>
-        <div className="inline-block text-white h-28 w-28 bg-no-repeat bg-cover text-center leading-[100px]" style={{backgroundImage: 'url(https://static.wikia.nocookie.net/gensin-impact/images/2/27/Icon_Catalyst.png)'}} onClick={(event) => {
+        <div className="inline-block text-white h-28 w-28 bg-no-repeat bg-cover text-center leading-[100px]" style={{backgroundImage: 'url(https://static.wikia.nocookie.net/gensin-impact/images/2/27/Icon_Catalyst.png)', borderStyle: isCatalyst ? 'solid' : '', borderWidth: isCatalyst ? '4px' : '', borderRadius: isCatalyst ? '9999px' : ''}} onClick={(event) => {
           if (!isCatalyst) {
             setIsCatalyst(!isCatalyst);
             //filterList('Catalyst')
@@ -244,7 +244,7 @@ const Filter = ({characters, setCharacters, allCharacters}) => {
           }
           setIsFiltered(!isFiltered);
         }}>Catalyst</div>
-        <div className="inline-block text-white h-28 w-28 bg-no-repeat bg-cover text-center leading-[100px]" style={{backgroundImage: 'url(https://static.wikia.nocookie.net/gensin-impact/images/6/66/Icon_Claymore.png)'}} onClick={(event) => {
+        <div className="inline-block text-white h-28 w-28 bg-no-repeat bg-cover text-center leading-[100px]" style={{backgroundImage: 'url(https://static.wikia.nocookie.net/gensin-impact/images/6/66/Icon_Claymore.png)', borderStyle: isClaymore ? 'solid' : '', borderWidth: isClaymore ? '4px' : '', borderRadius: isClaymore ? '9999px' : ''}} onClick={(event) => {
           if (!isClaymore) {
             setIsClaymore(!isClaymore);
             //filterList('Claymore');
