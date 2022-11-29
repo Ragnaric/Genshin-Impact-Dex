@@ -18,24 +18,41 @@ const Filter = ({characters, setCharacters, allCharacters}) => {
   const [isCatalyst, setIsCatalyst] = useState(false);
   const [isClaymore, setIsClaymore] = useState(false);
 
+  // useEffect(() => {
+  //   if (filters.length === 0) {
+  //     setCharacters(allCharacters);
+  //   } else {
+  //     let queryString = '';
+  //     for (let i = 0; i < filters.length; i+=2) {
+  //       if (i === 0) {
+  //         queryString += '/characters?' + filters[i] + '=' + filters[i + 1];
+  //       } else {
+  //         queryString += '&' + filters[i] + '=' + filters[i + 1];
+  //       }
+  //     }
+
+  //     axios.get(queryString)
+  //       .then(res => {
+  //         setCharacters(res.data);
+  //       })
+  //       .catch(err => console.error(err.stack));
+  //   }
+  // }, [isFiltered]);
+
   useEffect(() => {
     if (filters.length === 0) {
       setCharacters(allCharacters);
     } else {
-      let queryString = '';
-      for (let i = 0; i < filters.length; i+=2) {
-        if (i === 0) {
-          queryString += '/characters?' + filters[i] + '=' + filters[i + 1];
-        } else {
-          queryString += '&' + filters[i] + '=' + filters[i + 1];
+      let filteredResults = [];
+      allCharacters.forEach(character => {
+        for (let i = 1; i < filters.length; i +=2) {
+          if (character.element === filters[i] || character.weapon === filters[i]) {
+            filteredResults.push(character);
+          }
         }
-      }
-
-      axios.get(queryString)
-        .then(res => {
-          setCharacters(res.data);
-        })
-        .catch(err => console.error(err.stack));
+      });
+      //console.log('results', filteredResults, 'filters', filters)
+      setCharacters(filteredResults);
     }
   }, [isFiltered]);
 

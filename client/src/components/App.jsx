@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import '../input.css';
-import Navigation from './Navigation';
-import Overview from './Overview';
-import Talents from './Talents';
-import Constellations from './Constellations';
+import Navigation from './Navigation/Navigation';
+import Overview from './Overview/Overview';
+import Talents from './Talents/Talents';
+import Constellations from './Constellations/Constellations';
 
 const App = () => {
   const [characters, setCharacters] = useState([]);

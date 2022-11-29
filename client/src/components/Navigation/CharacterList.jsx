@@ -10,8 +10,8 @@ const CharacterList = ({characters, setCharacter, handleIconClick}) => {
 
   const updateIndex = (index) => {
     if (index < 0) {
-      index = characters.length - 43;
-    } else if (index > characters.length - 43) {
+      index = Math.floor(characters.length / 7);
+    } else if (index > Math.floor(characters.length / 7)) {
       index = 0;
     }
     setIndex(index);
