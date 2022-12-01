@@ -7,6 +7,8 @@ const Filter = ({characters, setCharacters, allCharacters}) => {
   const [rarityList, setRarityList] = useState([]);
   const [regionList, setRegionList] = useState([]);
 
+  const [filters, setFilters] = useState({});
+
   const [isAnemo, setIsAnemo] = useState(false);
   const [isGeo, setIsGeo] = useState(false);
   const [isPyro, setIsPyro] = useState(false);
@@ -21,24 +23,24 @@ const Filter = ({characters, setCharacters, allCharacters}) => {
   const [isClaymore, setIsClaymore] = useState(false);
 
   useEffect(() => {
+    console.log('filters', filters);
     if (elementList.length === 0 && weaponList.length === 0) {
       setCharacters(allCharacters);
     } else {
       let filteredList = [];
       allCharacters.forEach(character => {
-        if (elementList.length > 0 && weaponList.length === 0) {
-          setCharacters(elementList);
-        }
-        if (weaponList.length > 0 && elementList.length === 0) {
-          setCharacters(weaponList);
-        }
-        if (elementList.length > 0 && weaponList.length > 0) {
-          if (elementList.indexOf(character) !== -1 && weaponList.indexOf(character) !== -1) {
-            filteredList.push(character);
+        let isPresentInAll = true;
+        for (let key in filters) {
+          if (filters[key].indexOf(character) === -1) {
+            isPresentInAll = false;
+            return;
           }
-          setCharacters(filteredList);
+        }
+        if (isPresentInAll) {
+          filteredList.push(character);
         }
       });
+      setCharacters(filteredList);
     }
   }, [elementList, weaponList]);
 
@@ -50,6 +52,9 @@ const Filter = ({characters, setCharacters, allCharacters}) => {
       }
     });
     setElementList(newList);
+    let newFilters = filters;
+    newFilters.element = newList;
+    setFilters(newFilters);
   };
 
   const removeElement = (keyword) => {
@@ -61,6 +66,14 @@ const Filter = ({characters, setCharacters, allCharacters}) => {
       }
     }
     setElementList(newList);
+    let newFilters = filters;
+    newFilters.element = newList;
+    setFilters(newFilters);
+    if (newList.length === 0) {
+      let newFilters = filters;
+      delete newFilters.element;
+      setFilters(newFilters);
+    }
   };
 
   const filterByWeapon = (keyword) => {
@@ -71,6 +84,9 @@ const Filter = ({characters, setCharacters, allCharacters}) => {
       }
     })
     setWeaponList(newList);
+    let newFilters = filters;
+    newFilters.weapon = newList;
+    setFilters(newFilters);
   };
 
   const removeWeapon = (keyword) => {
@@ -82,6 +98,14 @@ const Filter = ({characters, setCharacters, allCharacters}) => {
       }
     }
     setWeaponList(newList);
+    let newFilters = filters;
+    newFilters.weapon = newList;
+    setFilters(newFilters);
+    if (newList.length === 0) {
+      let newFilters = filters;
+      delete newFilters.weapon;
+      setFilters(newFilters);
+    }
   };
 
   return (
