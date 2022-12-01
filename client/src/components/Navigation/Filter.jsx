@@ -4,6 +4,7 @@ import axios from 'axios';
 const Filter = ({characters, setCharacters, allCharacters}) => {
   const [isFiltered, setIsFiltered] = useState(false);
   const [filters, setFilters] = useState([]);
+  const [filteredResults, setFilteredResults] = useState([]);
 
   const [isAnemo, setIsAnemo] = useState(false);
   const [isGeo, setIsGeo] = useState(false);
@@ -18,27 +19,6 @@ const Filter = ({characters, setCharacters, allCharacters}) => {
   const [isCatalyst, setIsCatalyst] = useState(false);
   const [isClaymore, setIsClaymore] = useState(false);
 
-  // useEffect(() => {
-  //   if (filters.length === 0) {
-  //     setCharacters(allCharacters);
-  //   } else {
-  //     let queryString = '';
-  //     for (let i = 0; i < filters.length; i+=2) {
-  //       if (i === 0) {
-  //         queryString += '/characters?' + filters[i] + '=' + filters[i + 1];
-  //       } else {
-  //         queryString += '&' + filters[i] + '=' + filters[i + 1];
-  //       }
-  //     }
-
-  //     axios.get(queryString)
-  //       .then(res => {
-  //         setCharacters(res.data);
-  //       })
-  //       .catch(err => console.error(err.stack));
-  //   }
-  // }, [isFiltered]);
-
   useEffect(() => {
     if (filters.length === 0) {
       setCharacters(allCharacters);
@@ -46,13 +26,16 @@ const Filter = ({characters, setCharacters, allCharacters}) => {
       let filteredResults = [];
       allCharacters.forEach(character => {
         for (let i = 1; i < filters.length; i +=2) {
+          if (filteredResults.indexOf(character) !== -1) {
+            continue;
+          }
           if (character.element === filters[i] || character.weapon === filters[i]) {
             filteredResults.push(character);
           }
         }
       });
-      //console.log('results', filteredResults, 'filters', filters)
       setCharacters(filteredResults);
+      setFilteredResults(filteredResults);
     }
   }, [isFiltered]);
 
